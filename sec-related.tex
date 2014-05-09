@@ -1,0 +1,14 @@
+\section{Background}
+\subsection{Chisel Backannotation}
+Backannotation is a process to provide post-processing information that reflects implementation dependent characteristics to the circuit design. For Chisel designs, it is a process to provide post Chisel compilation information that is not available during an execution of the Chisel backend.
+
+Chisel backannotator is developed to provide this kind of information to the Chisel backend, and thus, to help other tools take advantage of the information. For example, delay information is not available until logic synthesis, but the automatic pipelining tool uses it to put the pipeline registers at the optimal places. Delay information can be obtained by timing reports from Synopsys tools, and the Chisel backannotator delivers this information to each Chisel graph node to help the automatic pipelining tool work on purpose.
+
+Another example is FPGA power modeling. To measure power efficiently, we generate counters for important signals that are provided by the power model generator. The power model generator produces linear power models using RTL simulations, and then the backannotator marks important signals in the Chisel graph after reading the power models. The counter generator produces counter infrastructure for important signals using the backannotated Chisel graph.
+
+\subsection{Automatic Pipelining}
+\label{sec:related-work}
+This project is based on the existing automatic pipelining tool built on top of Chisel\cite{Bachrach:2012}. The existing automatic pipelining tool allows the RTL designer to specify a one cycle implementation of a finite state machine along with a set of annotations that specify the pipeline stage number of a subset of Chisel graph nodes in the design. During the Chisel backend elaboration process, the automatic pipelining tool transforms the original one stage implementation of the finite state machine into a pipelined design with the correct hazard resolution logic according to the pipeline stage number annotations. The tool resolves pipeline hazards (which are confined to read-after-write hazards) in one of three ways: interlocking, bypassing, and speculation. The tool resolves pipeline hazards with interlocking by default and the user can select particular state elements to be resolved with bypassing and speculation with additional annotation.
+
+This tool expands upon the work by Nurvitadhi et al~\cite{hoe:syn}, which provides a means to automatically pipeline finite state machines by having the designer label every combinational and sequential node in the design in a hierarchical manner using a specialized specification language. Our automatic pipelining tool does not require the user to annotate every node with a stage number, but automatically finds the close-to-optimal pipeline register placements.
+

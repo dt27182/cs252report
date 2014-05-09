@@ -1,0 +1,73 @@
+%-----------------------------------------------------------------------------
+%
+%               Template for sigplanconf LaTeX Class
+%
+% Name:         sigplanconf-template.tex
+%
+% Purpose:      A template for sigplanconf.cls, which is a LaTeX 2e class
+%               file for SIGPLAN conference proceedings.
+%
+% Guide:        Refer to "Author's Guide to the ACM SIGPLAN Class,"
+%               sigplanconf-guide.pdf
+%
+% Author:       Paul C. Anagnostopoulos
+%               Windfall Software
+%               978 371-2316
+%               paul@windfall.com
+%
+% Created:      15 February 2005
+%
+%-----------------------------------------------------------------------------
+
+
+\documentclass[10pt,nocopyrightspace]{sigplanconf}
+
+% The following \documentclass options may be useful:
+%
+% 10pt          To set in 10-point type instead of 9-point.
+% 11pt          To set in 11-point type instead of 9-point.
+% authoryear    To obtain author/year citation style instead of numeric.
+
+\usepackage[normalem]{ulem}
+\newcommand{\Comment}[1]{\textcolor{red}{\bf #1}}
+%\renewcommand{\iff}{\ensuremath{\mathrm{iff}}}
+\usepackage{tabularx}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage[labelfont=bf]{caption}
+\usepackage{subcaption}
+\usepackage{natbib}
+\usepackage{balance}
+
+\epstopdfsetup{update}
+
+\begin{document}
+
+%\titlebanner{}        % These are ignored unless
+\preprintfooter{}   % 'preprint' option specified.
+
+\title{Automatic Pipeline Register Placement with Delay Backannotation in Chisel}
+\subtitle{}
+
+\authorinfo{Wenyu Tang, Donggyu Kim}
+           {University of California, Berkeley}
+           {\{wenyu, dgkim\}@eecs.berkeley.edu}
+
+\maketitle
+
+\input{sec-abstract}
+\input{sec-intro}
+\input{sec-related}
+\input{sec-flow}
+\input{sec-technical}
+\input{sec-results}
+\input{sec-conclusion}
+\input{sec-feedback}
+\bibliographystyle{abbrvnat}
+\setlength{\bibsep}{0.0pt}
+\renewcommand*{\bibfont}{\footnotesize}
+\bibliography{references}
+
+\end{document}

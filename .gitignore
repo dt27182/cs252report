@@ -1,0 +1,9 @@
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*~
+paper.pdf
+*.swp
+.DS_Store
